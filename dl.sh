@@ -267,7 +267,7 @@ function tui_interactive_menu() {
     tui_collect_data "esrgan" "${ESRGAN_MODELS[@]}"
     tui_collect_data "vae_approx" "${VAE_APPROX_MODELS[@]}"
     tui_collect_data "text_encoders" "${TEXT_ENCODER_MODELS[@]}"
-
+    tui_collect_data "clip_vison" "${CLIP_VISION_MODELS[@]}"
     tui_fetch_sizes
     tui_sort_data
 
