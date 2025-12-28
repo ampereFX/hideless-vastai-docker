@@ -110,8 +110,9 @@ RUN pip install --no-cache-dir -r ComfyUI-DepthAnythingV3/requirements.txt
 COPY comfyui.conf /etc/supervisor/conf.d/comfyui.conf
 
 # dl.sh nach /workspace kopieren und ausführbar machen
-RUN git clone https://github.com/ampereFX/hideless-vastai-docker.git
-RUN chmod +x /workspace/hideless-vastai-docker/dl.sh
+RUN cd /workspace && \
+git clone https://github.com/ampereFX/hideless-vastai-docker.git && \
+chmod +x /workspace/hideless-vastai-docker/dl.sh
 
 # 8. Ports
 EXPOSE 8188
