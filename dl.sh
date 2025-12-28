@@ -32,6 +32,11 @@ DIFFUSION_MODELS=(
     # wan22 14b i2v default comfy weights
     wan22_14b_i2v_comfy "https://huggingface.co/Comfy-Org/Wan_2.2_ComfyUI_Repackaged/resolve/main/split_files/diffusion_models/wan2.2_i2v_high_noise_14B_fp8_scaled.safetensors"
     wan22_14b_i2v_comfy "https://huggingface.co/Comfy-Org/Wan_2.2_ComfyUI_Repackaged/resolve/main/split_files/diffusion_models/wan2.2_i2v_low_noise_14B_fp8_scaled.safetensors"
+    # wan22 fun camera control 14b vid2vid
+    wan22_14b_vid2vid_fun_cam_ctrl "https://huggingface.co/Comfy-Org/Wan_2.2_ComfyUI_Repackaged/resolve/main/split_files/diffusion_models/wan2.2_fun_camera_high_noise_14B_fp8_scaled.safetensors"
+    wan22_14b_vid2vid_fun_cam_ctrl "https://huggingface.co/Comfy-Org/Wan_2.2_ComfyUI_Repackaged/resolve/main/split_files/diffusion_models/wan2.2_fun_camera_low_noise_14B_fp8_scaled.safetensors"
+    # wan21 wan move fp8 scaled r4m3fn kj default comfy
+    wan21_move_fp8 "https://huggingface.co/Kijai/WanVideo_comfy_fp8_scaled/resolve/main/WanMove/Wan21-WanMove_fp8_scaled_e4m3fn_KJ.safetensors"
 )
 
 UNET_MODELS=(
@@ -49,6 +54,9 @@ UNET_MODELS=(
     qwen_image "https://huggingface.co/unsloth/Qwen-Image-GGUF/resolve/main/qwen-image-Q4_K_M.gguf"
     # qwen image edit 2511 gguf q4_k_m
     qwen_image_edit_2511 "https://huggingface.co/unsloth/Qwen-Image-Edit-2511-GGUF/resolve/main/qwen-image-edit-2511-Q4_K_M.gguf"
+    # flux2 dev gguf q4_k_m
+    flux2 "https://huggingface.co/city96/FLUX.2-dev-gguf/resolve/main/flux2-dev-Q4_K_M.gguf"
+    
 )
 
 LORA_MODELS=(
@@ -64,6 +72,8 @@ LORA_MODELS=(
     wan22_14b_i2v_comfy "https://huggingface.co/Comfy-Org/Wan_2.2_ComfyUI_Repackaged/resolve/main/split_files/loras/wan2.2_i2v_lightx2v_4steps_lora_v1_low_noise.safetensors"
     # qwen image edit 2511 lightning lora 4 steps
     qwen_image_edit_2511 "https://huggingface.co/lightx2v/Qwen-Image-Edit-2511-Lightning/resolve/main/Qwen-Image-Edit-2511-Lightning-4steps-V1.0-bf16.safetensors"
+    qwen_image_edit_loras "https://huggingface.co/Comfy-Org/Qwen-Image-Edit_ComfyUI/resolve/main/split_files/loras/Qwen-Edit-2509-Multiple-angles.safetensors::qwen_image_edit/Qwen-Edit-2509-Multiple-angles.safetensors"
+    qwen_image_edit_loras "https://huggingface.co/lightx2v/Qwen-Image-Lightning/resolve/main/Qwen-Image-Edit-2509/Qwen-Image-Edit-2509-Lightning-4steps-V1.0-bf16.safetensors::qwen_image_edit/Qwen-Image-Edit-2509-Lightning-4steps-V1.0-bf16.safetensors"
 )
 
 VAE_MODELS=(
@@ -81,6 +91,8 @@ VAE_MODELS=(
     wan_base "https://huggingface.co/lightx2v/Autoencoders/resolve/main/taew2_2.safetensors"
     # qwen image vae
     qwen_image_edit_2511 "https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/resolve/main/split_files/vae/qwen_image_vae.safetensors"
+    # flux2 vae
+    flux2 "https://huggingface.co/Comfy-Org/flux2-dev/resolve/main/split_files/vae/flux2-vae.safetensors"
 )
 
 ESRGAN_MODELS=(
@@ -96,14 +108,17 @@ TEXT_ENCODER_MODELS=(
     wan_base "https://huggingface.co/city96/umt5-xxl-encoder-gguf/resolve/main/umt5-xxl-encoder-Q5_K_M.gguf"
     # umt5 xxl encoder fp8 e4m3fn
     wan_base "https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/text_encoders/umt5_xxl_fp8_e4m3fn_scaled.safetensors"
+    # z image turbo (qwen3 4b)
+    z_image_qwen3_4b "https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/text_encoders/qwen_3_4b.safetensors"
     # qwen3 4b z-image-engineer
     z-image-turbo "https://huggingface.co/BennyDaBall/qwen3-4b-Z-Image-Engineer/resolve/main/Models/Qwen3-4b-Z-Engineer-V2-Q8_0.gguf"
-    # qwen3 4b base
+    # qwen3 4b base gguf q8_0
     qwen_image "https://huggingface.co/unsloth/Qwen3-4B-GGUF/resolve/main/Qwen3-4B-Q8_0.gguf"
-    # qwen2.5 vl 7b instruct
+    # qwen2.5 vl 7b instruct gguf
     qwen_image_edit_2511 "https://huggingface.co/lmstudio-community/Qwen2.5-VL-7B-Instruct-GGUF/resolve/main/Qwen2.5-VL-7B-Instruct-Q6_K.gguf"
-    # RENAMING: URL::FILENAME (Tag steht davor)
     qwen_image_edit_2511 "https://huggingface.co/lmstudio-community/Qwen2.5-VL-7B-Instruct-GGUF/resolve/main/mmproj-model-f16.gguf::Qwen2.5-VL-7B-Instruct-Q6_K.mmproj-model-f16.gguf"
+    # flux2 text encoder mistral small 3 q4_0 gguf
+    flux2 "https://huggingface.co/gguf-org/flux2-dev-gguf/resolve/main/cow-mistral3-small-q4_0.gguf"
 )
 
 VAE_APPROX_MODELS=(
