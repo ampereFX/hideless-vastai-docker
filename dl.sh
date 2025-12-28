@@ -64,7 +64,7 @@ UNET_MODELS=(
     wan22_14b_fun_ctrl_gguf "https://huggingface.co/QuantStack/Wan2.2-Fun-A14B-Control-GGUF/resolve/main/LowNoise/Wan2.2-Fun-A14B-Control_LowNoise-Q5_K_M.gguf"
     # wan22 vace fun 14b gguf
     wan22_14b_vace_fun_gguf "https://huggingface.co/QuantStack/Wan2.2-VACE-Fun-A14B-GGUF/resolve/main/HighNoise/Wan2.2-VACE-Fun-A14B-high-noise-Q4_K_M.gguf"
-    wan22_14b_vace_fun_gguf "https://huggingface.co/QuantStack/Wan2.2-VACE-Fun-A14B-GGUF/resolve/main/HighNoise/Wan2.2-VACE-Fun-A14B-high-noise-Q4_K_M.gguf"
+    wan22_14b_vace_fun_gguf "https://huggingface.co/QuantStack/Wan2.2-VACE-Fun-A14B-GGUF/resolve/main/LowNoise/Wan2.2-VACE-Fun-A14B-low-noise-Q4_K_M.gguf"
     # wan22 5b ti2v fun control gguf q8_0
     wan22_5b_fun_ctrl_gguf "https://huggingface.co/QuantStack/Wan2.2-Fun-5B-Control-GGUF/resolve/main/Wan2.2-Fun-5B-Control-Q8_0.gguf"
     # wan22 5b ti2v fun control gguf q8_0
