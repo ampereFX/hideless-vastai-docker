@@ -89,6 +89,8 @@ LORA_MODELS=(
     qwen_image_edit_2511 "https://huggingface.co/lightx2v/Qwen-Image-Edit-2511-Lightning/resolve/main/Qwen-Image-Edit-2511-Lightning-4steps-V1.0-bf16.safetensors"
     qwen_image_edit_loras "https://huggingface.co/Comfy-Org/Qwen-Image-Edit_ComfyUI/resolve/main/split_files/loras/Qwen-Edit-2509-Multiple-angles.safetensors::qwen_image_edit/Qwen-Edit-2509-Multiple-angles.safetensors"
     qwen_image_edit_loras "https://huggingface.co/lightx2v/Qwen-Image-Lightning/resolve/main/Qwen-Image-Edit-2509/Qwen-Image-Edit-2509-Lightning-4steps-V1.0-bf16.safetensors::qwen_image_edit/Qwen-Image-Edit-2509-Lightning-4steps-V1.0-bf16.safetensors"
+    # wan22 5b ti2v fastwan lora
+    wan22_5b_fastwan_lora "https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/FastWan/Wan2_2_5B_FastWanFullAttn_lora_rank_128_bf16.safetensors"
 )
 
 VAE_MODELS=(
