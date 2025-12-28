@@ -514,26 +514,15 @@ function process_downloads() {
             pid_info[$pid]="$filename|$logfile"
         done
 
-        # 3. Render Dashboard (Clear Screen approach to allow variable terminal width)
-        printf "\033[2J\033[H"
-        
+        # 3. Prepare Data & Buffer Output
         local term_cols=$(tput cols)
         if [[ -z "$term_cols" || "$term_cols" -lt 80 ]]; then term_cols=80; fi
         
         local total_speed_bytes=0
         local percent=$(( (finished_count * 100) / total_files ))
+        local rows_buffer=()
         
-        local global_speed_str=$(format_speed "$total_speed_bytes") # Placeholder
-        
-        # Header
-        printf "${C_BLUE}=====================================================================================${C_RESET_ALL}\n"
-        printf " Global Speed: ${C_BOLD}${C_GREEN}CALCULATING... ${C_RESET_ALL} | Progress: [${C_GREEN}%d%%${C_RESET_ALL}] (%d/%d) | Failed: ${C_RED}%d${C_RESET_ALL}\n" "$percent" "$finished_count" "$total_files" "$failed_count"
-        printf "${C_BLUE}-------------------------------------------------------------------------------------${C_RESET_ALL}\n"
-        printf " %-12s | %-15s | %-5s | %s\n" "SPEED" "PROGRESS" "%" "FILENAME"
-        printf "${C_BLUE}-------------------------------------------------------------------------------------${C_RESET_ALL}\n"
-
-        local row_count=0
-        
+        # Collect Data First
         for pid in "${active_pids[@]}"; do
             IFS='|' read -r fname logpath <<< "${pid_info[$pid]}"
             
@@ -552,35 +541,43 @@ function process_downloads() {
             total_speed_bytes=$((total_speed_bytes + speed_b))
             
             # Calculated Truncation for Filename
-            # 12+15+5 + spacers ~= 40 chars reserved. 
             local max_name_len=$((term_cols - 45))
             if [[ $max_name_len -lt 10 ]]; then max_name_len=10; fi
             local display_name="${fname:0:$max_name_len}"
             
-            printf " ${C_YELLOW}%-12s${C_RESET_ALL} | %-15s | %3s%%  | ${C_CYAN}%s${C_RESET_ALL}\n" "$dl_speed" "${dl_recv}/${dl_total}" "$dl_pct" "$display_name"
+            rows_buffer+=(" ${C_YELLOW}$(printf "%-12s" "$dl_speed")${C_RESET_ALL} | $(printf "%-15s" "${dl_recv}/${dl_total}") | $(printf "%3s%%" "$dl_pct")  | ${C_CYAN}${display_name}${C_RESET_ALL}")
+        done
+        
+        local global_speed_str=$(format_speed "$total_speed_bytes")
+        
+        # Construct Final Output Buffer
+        local out_buff="\033[2J\033[H"
+        
+        out_buff+="${C_BLUE}=====================================================================================${C_RESET_ALL}\n"
+        out_buff+=" Global Speed: ${C_BOLD}${C_GREEN}${global_speed_str}${C_RESET_ALL} | Progress: [${C_GREEN}${percent}%${C_RESET_ALL}] (${finished_count}/${total_files}) | Failed: ${C_RED}${failed_count}${C_RESET_ALL}\n"
+        out_buff+="${C_BLUE}-------------------------------------------------------------------------------------${C_RESET_ALL}\n"
+        out_buff+=$(printf " %-12s | %-15s | %-5s | %s\n" "SPEED" "PROGRESS" "%" "FILENAME")
+        out_buff+="${C_BLUE}-------------------------------------------------------------------------------------${C_RESET_ALL}\n"
+
+        local row_count=0
+        for row in "${rows_buffer[@]}"; do
+            out_buff+="${row}\n"
             ((row_count++))
         done
         
         while [[ $row_count -lt $max_jobs ]]; do
-            printf " %-12s | %-15s | %-5s | %s\n" "--" "--/--" "--" "Waiting..."
+            out_buff+=$(printf " %-12s | %-15s | %-5s | %s\n" "--" "--/--" "--" "Waiting...")
             ((row_count++))
         done
         
-        # Redraw Header with actual speed (Move up to line 2, overwrite, move back)
-        local gs=$(format_speed "$total_speed_bytes")
-        # Line 2 is 14 lines up (10 slots + 3 header lines + 1 footer line we are about to print)
-        # Actually simplest is to just accept it shows in next frame or use tput cup
-        # But for robustness, let's just let it lag 1 frame or print it next time.
-        # Actually, since we cleared screen, we can't go back easily without hardcoding line numbers.
-        # Let's fix the header print order for next loop? No, speed is calc'd in loop.
-        # FIX: Just print the Footer logs now.
-        
-        printf "${C_BLUE}=====================================================================================${C_RESET_ALL}\n"
+        out_buff+="${C_BLUE}=====================================================================================${C_RESET_ALL}\n"
         for logl in "${log_lines[@]}"; do
-            # Truncate log to width
             local clean_log="${logl:0:$((term_cols-2))}"
-            printf " %b\n" "$clean_log"
+            out_buff+=" ${clean_log}\n"
         done
+        
+        # Print Buffer at once
+        printf "%b" "$out_buff"
         
         sleep 1
     done
