@@ -56,6 +56,7 @@ UNET_MODELS=(
     qwen_image_edit_2511 "https://huggingface.co/unsloth/Qwen-Image-Edit-2511-GGUF/resolve/main/qwen-image-edit-2511-Q4_K_M.gguf"
     # flux2 dev gguf q4_k_m
     flux2 "https://huggingface.co/city96/FLUX.2-dev-gguf/resolve/main/flux2-dev-Q4_K_M.gguf"
+    
 )
 
 LORA_MODELS=(
@@ -120,6 +121,10 @@ TEXT_ENCODER_MODELS=(
     flux2 "https://huggingface.co/gguf-org/flux2-dev-gguf/resolve/main/cow-mistral3-small-q4_0.gguf"
 )
 
+CLIP_VISION_MODELS=(
+    wan_clip_vision_h "https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/clip_vision/clip_vision_h.safetensors"
+)
+
 VAE_APPROX_MODELS=(
     base "https://github.com/madebyollin/taesd/raw/main/taef1_decoder.pth"
     base "https://github.com/madebyollin/taesd/raw/main/taef1_encoder.pth"
@@ -129,10 +134,6 @@ VAE_APPROX_MODELS=(
     base "https://github.com/madebyollin/taesd/raw/main/taesdxl_encoder.pth"
     base "https://github.com/madebyollin/taesd/raw/main/taesd_decoder.pth"
     base "https://github.com/madebyollin/taesd/raw/main/taesd_encoder.pth"
-)
-
-CLIP_VISION_MODELS=(
-    wan_clip_vision "https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/clip_vision/clip_vision_h.safetensors"
 )
 
 ### DO NOT EDIT BELOW HERE UNLESS YOU KNOW WHAT YOU ARE DOING ###
@@ -677,11 +678,12 @@ function provisioning_print_end() {
 # Allow user to disable provisioning
 if [[ ! -f /.noprovisioning ]]; then
     SELECTED_TAGS=()
-    SELECT_MODE="false"
+    SELECT_MODE="true"
     
     for arg in "$@"; do
         if [[ "$arg" == "--test" ]]; then export TEST_MODE="true"
         elif [[ "$arg" == "--select" ]]; then SELECT_MODE="true"
+        elif [[ "$arg" == "--no-select" ]]; then SELECT_MODE="false"
         elif [[ "$arg" == "--no-dl" ]]; then export NO_DL_MODE="true"
         else SELECTED_TAGS+=("$arg"); fi
     done
