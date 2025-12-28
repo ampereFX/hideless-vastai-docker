@@ -103,13 +103,21 @@ RUN pip install --no-cache-dir -r ComfyUI_TensorRT/requirements.txt
 RUN git clone https://github.com/PozzettiAndrea/ComfyUI-DepthAnythingV3.git
 RUN pip install --no-cache-dir -r ComfyUI-DepthAnythingV3/requirements.txt
 
+
+
 # fix pytorch
 RUN pip install --pre --upgrade --no-cache-dir torch --extra-index-url https://download.pytorch.org/whl/nightly/cu128
 RUN pip install --pre --upgrade --no-cache-dir torchvision --extra-index-url https://download.pytorch.org/whl/nightly/cu128
 
+RUN pip install sageattention triton
+
 # 7. Config kopieren
 # Wir legen unsere Config zu den anderen (Jupyter, etc.)
 COPY comfyui.conf /etc/supervisor/conf.d/comfyui.conf
+
+# dl.sh nach /workspace kopieren und ausführbar machen
+COPY dl.sh /workspace/dl.sh
+RUN chmod +x /workspace/dl.sh
 
 # 8. Ports
 EXPOSE 8188
