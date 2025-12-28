@@ -33,10 +33,24 @@ DIFFUSION_MODELS=(
     wan22_14b_i2v_comfy "https://huggingface.co/Comfy-Org/Wan_2.2_ComfyUI_Repackaged/resolve/main/split_files/diffusion_models/wan2.2_i2v_high_noise_14B_fp8_scaled.safetensors"
     wan22_14b_i2v_comfy "https://huggingface.co/Comfy-Org/Wan_2.2_ComfyUI_Repackaged/resolve/main/split_files/diffusion_models/wan2.2_i2v_low_noise_14B_fp8_scaled.safetensors"
     # wan22 fun camera control 14b vid2vid
-    wan22_14b_vid2vid_fun_cam_ctrl "https://huggingface.co/Comfy-Org/Wan_2.2_ComfyUI_Repackaged/resolve/main/split_files/diffusion_models/wan2.2_fun_camera_high_noise_14B_fp8_scaled.safetensors"
-    wan22_14b_vid2vid_fun_cam_ctrl "https://huggingface.co/Comfy-Org/Wan_2.2_ComfyUI_Repackaged/resolve/main/split_files/diffusion_models/wan2.2_fun_camera_low_noise_14B_fp8_scaled.safetensors"
+    wan22_14b_fun_cam_ctrl "https://huggingface.co/Comfy-Org/Wan_2.2_ComfyUI_Repackaged/resolve/main/split_files/diffusion_models/wan2.2_fun_camera_high_noise_14B_fp8_scaled.safetensors"
+    wan22_14b_fun_cam_ctrl "https://huggingface.co/Comfy-Org/Wan_2.2_ComfyUI_Repackaged/resolve/main/split_files/diffusion_models/wan2.2_fun_camera_low_noise_14B_fp8_scaled.safetensors"
+    # wan22 fun camera control 14b gguf
+    wan22_14b_fun_cam_ctrl_gguf "https://huggingface.co/QuantStack/Wan2.2-Fun-A14B-Control-GGUF/resolve/main/HighNoise/Wan2.2-Fun-A14B-Control_HighNoise-Q5_K_M.gguf"
+    wan22_14b_fun_cam_ctrl_gguf "https://huggingface.co/QuantStack/Wan2.2-Fun-A14B-Control-GGUF/resolve/main/LowNoise/Wan2.2-Fun-A14B-Control_LowNoise-Q5_K_M.gguf"
+    # wan22 fun  control 14b gguf
+    wan22_14b_fun_ctrl_gguf "https://huggingface.co/QuantStack/Wan2.2-Fun-A14B-Control-GGUF/resolve/main/HighNoise/Wan2.2-Fun-A14B-Control_HighNoise-Q5_K_M.gguf"
+    wan22_14b_fun_ctrl_gguf "https://huggingface.co/QuantStack/Wan2.2-Fun-A14B-Control-GGUF/resolve/main/LowNoise/Wan2.2-Fun-A14B-Control_LowNoise-Q5_K_M.gguf"
+    # wan22 vace fun 14b gguf
+    wan22_14b_vace_fun_gguf "https://huggingface.co/QuantStack/Wan2.2-VACE-Fun-A14B-GGUF/resolve/main/HighNoise/Wan2.2-VACE-Fun-A14B-high-noise-Q4_K_M.gguf"
+    wan22_14b_vace_fun_gguf "https://huggingface.co/QuantStack/Wan2.2-VACE-Fun-A14B-GGUF/resolve/main/HighNoise/Wan2.2-VACE-Fun-A14B-high-noise-Q4_K_M.gguf"
     # wan21 wan move fp8 scaled r4m3fn kj default comfy
     wan21_move_fp8 "https://huggingface.co/Kijai/WanVideo_comfy_fp8_scaled/resolve/main/WanMove/Wan21-WanMove_fp8_scaled_e4m3fn_KJ.safetensors"
+    # wan22 5b ti2v fun control gguf q8_0
+    wan22_5b_fun_ctrl_gguf "https://huggingface.co/QuantStack/Wan2.2-Fun-5B-Control-GGUF/resolve/main/Wan2.2-Fun-5B-Control-Q8_0.gguf"
+    # wan22 5b ti2v fun control gguf q8_0
+    wan22_5b_fun_ctrl_cam_gguf "https://huggingface.co/QuantStack/Wan2.2-Fun-5B-Control-Camera-GGUF/resolve/main/Wan2.2-Fun-5B-Control-Camera-Q8_0.gguf"
+
 )
 
 UNET_MODELS=(
