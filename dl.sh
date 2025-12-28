@@ -673,11 +673,12 @@ function provisioning_print_end() {
 # Allow user to disable provisioning
 if [[ ! -f /.noprovisioning ]]; then
     SELECTED_TAGS=()
-    SELECT_MODE="false"
+    SELECT_MODE="true"
     
     for arg in "$@"; do
         if [[ "$arg" == "--test" ]]; then export TEST_MODE="true"
         elif [[ "$arg" == "--select" ]]; then SELECT_MODE="true"
+        elif [[ "$arg" == "--no-select" ]]; then SELECT_MODE="false"
         elif [[ "$arg" == "--no-dl" ]]; then export NO_DL_MODE="true"
         else SELECTED_TAGS+=("$arg"); fi
     done
