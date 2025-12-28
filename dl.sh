@@ -34,6 +34,8 @@ DIFFUSION_MODELS=(
     wan22_14b_i2v_comfy "https://huggingface.co/Comfy-Org/Wan_2.2_ComfyUI_Repackaged/resolve/main/split_files/diffusion_models/wan2.2_i2v_low_noise_14B_fp8_scaled.safetensors"
     # wan21 wan move fp8 scaled r4m3fn kj default comfy
     wan21_move_fp8 "https://huggingface.co/Kijai/WanVideo_comfy_fp8_scaled/resolve/main/WanMove/Wan21-WanMove_fp8_scaled_e4m3fn_KJ.safetensors"
+    # wan22 5b fun control bf16 10gb
+    wan22_5b_fun_control_bf16 "https://huggingface.co/alibaba-pai/Wan2.2-Fun-5B-Control/resolve/main/diffusion_pytorch_model.safetensors::Wan2.2-Fun-5B-Control-BF16.safetensors"
     # wan22 fun camera control 14b vid2vid
     wan22_14b_fun_cam_ctrl "https://huggingface.co/Comfy-Org/Wan_2.2_ComfyUI_Repackaged/resolve/main/split_files/diffusion_models/wan2.2_fun_camera_high_noise_14B_fp8_scaled.safetensors"
     wan22_14b_fun_cam_ctrl "https://huggingface.co/Comfy-Org/Wan_2.2_ComfyUI_Repackaged/resolve/main/split_files/diffusion_models/wan2.2_fun_camera_low_noise_14B_fp8_scaled.safetensors"
